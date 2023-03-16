@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /* Обнуление */
-*,
-*::before,
-*::after {
+* {
   padding: 0;
   margin: 0;
   border: 0;
@@ -68,7 +66,7 @@ h6 {
 }
 
 :root {
-  --title-color: #2e3038;
+  --title-color: #141516;
   --trigger-color: #3349a0;
   --active-color: #f6fbfc;
   --color-icon: #323232;
@@ -77,7 +75,9 @@ h6 {
 }
 
 html {
-  font-size: 10px;
+  /* font-size: 10px; */
+  font-size: 65%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -104,6 +104,7 @@ body {
 .main__container {
   color: var(--trigger-color);
 }
+
 .main__container:hover {
   color: var(--title-color);
   transition: ease all 0.7s;
@@ -130,9 +131,9 @@ body {
   width: 30rem;
 }
 
-.accordion:hover .acc__icon {
+/* .accordion:hover .acc__icon {
   visibility: visible;
-}
+} */
 
 .accordion__item {
   display: flex;
@@ -140,9 +141,11 @@ body {
   justify-content: center;
   border-top: 0.3rem solid var(--color-header);
 }
-.accordion__item:hover .accord__img {
-  max-height: 36rem;
-}
+
+/* .accordion__item:hover .accord__img {
+  max-height: 16rem;
+} */
+
 .accordion__item:last-child {
   border-bottom: 0.3rem solid var(--color-header);
 }
@@ -164,8 +167,8 @@ body {
   font-size: 1.3rem;
   line-height: 2rem;
   font-weight: 500;
-  padding: 1.3rem 0rem 0rem 0rem;
-  margin-bottom: -1rem;
+  /* padding: 1.3rem 0rem 0rem 0rem; */
+  /* margin-bottom: -1rem; */
   cursor: pointer;
   position: relative;
   opacity: 0.8;
@@ -179,9 +182,10 @@ body {
   width: 1rem;
   background-position: center;
   background-repeat: no-repeat;
-  visibility: hidden;
+  visibility: visible;
   transform: rotate(90deg);
   transition: all 0.8s;
+  margin-top: -1.5rem;
 }
 
 .accordion__item:hover .acc__icon {
@@ -197,22 +201,32 @@ body {
 .accord__img {
   max-height: 0;
   transition: all 0.8s;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
-.accordion__input:checked ~ .accordion__item-trigger > span {
+/* .accordion__input:checked ~ .accordion__item-trigger > span {
+  background-image: url(../image/plus-black.svg);
+  transform: rotate(45deg);
+  transition: all 0.3s;
+  visibility: visible;
+} */
+.accordion__input:checked ~ label > .img__content > span {
   background-image: url(../image/plus-black.svg);
   transform: rotate(45deg);
   transition: all 0.3s;
   visibility: visible;
 }
 
-.accordion__input:checked ~ .accordion__item-trigger {
-  color: var(--title-color);
+.accordion__input:checked ~ label > .img__content > img {
+  height: 100%;
+  max-height: 15rem;
 }
 
-.accordion__input:checked ~ .accord__img {
-  max-height: 30rem;
+.accordion__input:checked ~ .accordion__items > h2 {
+  color: var(--title-color);
+}
+.accordion__input:checked ~ .accordion__items > .img__content {
+  height: 100%;
 }
 
 .accordion__input:checked ~ .accordion__content {
@@ -226,11 +240,7 @@ body {
   opacity: 0.8;
 }
 
-.footer__content {
-  cursor: pointer;
-}
-
-@media (min-width: 820px) {
+@media (min-width: 720px) {
   body {
     padding: 2rem;
     min-width: 82rem;
@@ -253,17 +263,63 @@ body {
   .accordion__item {
     max-width: 60rem;
   }
+
+  .accordion__items {
+    padding: 0.5rem 0rem;
+  }
+
   .accordion__item-trigger {
     font-size: 2rem;
     line-height: 3rem;
     font-weight: 600;
-    padding: 1rem 0rem 0rem 0rem;
-    margin-bottom: -1.5rem;
+    /* padding: 1rem 0rem 0rem 0rem;
+    margin-bottom: -1.5rem; */
   }
+
+  .acc__icon {
+    visibility: visible;
+    margin-top: -1.8rem;
+  }
+
+  .accordion__input:checked ~ label > .img__content > img {
+    height: 100%;
+    max-height: 24rem;
+  }
+
   .accordion__input:checked ~ .accord__img {
     max-height: 60rem;
   }
 }
+
+/* style before  */
+.img__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* style before */
+
+@media (min-width: 1020px) {
+  .acc__icon {
+    visibility: hidden;
+  }
+  .accordion__items {
+    padding: 1rem 0rem;
+  }
+
+  .accordion__item-trigger {
+    font-size: 2.3rem;
+    line-height: 3.3rem;
+    font-weight: 600;
+    /* padding: 1rem 0rem 0rem 0rem;
+    margin-bottom: -1.5rem; */
+  }
+
+  .acc__icon {
+    margin-top: -2rem;
+  }
+}
+
 @media (min-width: 1920px) {
   body {
     padding: 3rem;
@@ -287,24 +343,69 @@ body {
   .accordion__item {
     max-width: 90rem;
   }
+
+  .accordion__items {
+    padding: 1.5rem 0rem;
+  }
+
+  .acc__icon {
+    visibility: hidden;
+  }
+
   .accordion__item-trigger {
-    font-size: 2.4rem;
-    line-height: 3.4rem;
+    font-size: 2.6rem;
+    line-height: 3.6rem;
     font-weight: 600;
     padding: 1rem 0rem 0rem 0rem;
     margin-bottom: -2rem;
   }
+
+  .accordion__input:checked ~ label > .img__content > img {
+    height: 100%;
+    max-height: 30rem;
+  }
+
   .accordion__input:checked ~ .accord__img {
     max-height: 85rem;
   }
 }
+
 @media (hover: hover) and (pointer: fine) {
   .accordion__item:hover .accord__img {
-    max-height: 36rem;
+    max-height: 16rem;
   }
   .accordion__item:hover .acc__icon {
     background-image: url(../image/plus-black.svg);
     transform: rotate(45deg);
     transition: all 0.3s;
+  }
+
+  .main__container:hover {
+    color: var(--title-color);
+    transition: ease all 0.7s;
+  }
+
+  .accordion:hover .acc__icon {
+    visibility: visible;
+  }
+
+  .accordion__item-trigger {
+    cursor: pointer;
+  }
+
+  .img__content {
+    cursor: pointer;
+  }
+
+  .accord__img {
+    cursor: pointer;
+  }
+
+  .acc__icon {
+    cursor: pointer;
+  }
+
+  .footer__content {
+    cursor: pointer;
   }
 } /*# sourceMappingURL=style.css.map */
