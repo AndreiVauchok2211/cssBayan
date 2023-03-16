@@ -111,7 +111,7 @@ body {
 }
 
 .header {
-  border: 2px solid #3349a0;
+  border: 0.2rem solid #3349a0;
   border-radius: 1rem;
   background-color: var(--color-header);
   opacity: 0.8;
